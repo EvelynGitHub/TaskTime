@@ -1,0 +1,22 @@
+{
+    "name": "evelyn/taks-time",
+    "description": "Um facilitador para o gerenciamento de tempos em tarefas",
+    "autoload": {
+        "psr-4": {
+            "TaksTime\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Evelyn Francisco",
+            "email": "evelynbrandao15@gmail.com",
+	    "role": "Developer"
+        },
+	{
+	    "name": "Rodrigo Yuri",
+	    "email": "rodrigo_yuri@hotmail.com",
+	    "role": "Developer"
+	}
+    ],
+    "require": {}
+}
