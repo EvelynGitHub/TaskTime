@@ -10,13 +10,13 @@
         {
             "name": "Evelyn Francisco",
             "email": "evelynbrandao15@gmail.com",
-	    "role": "Developer"
+            "role": "Developer"
         },
-	{
-	    "name": "Rodrigo Yuri",
-	    "email": "rodrigo_yuri@hotmail.com",
-	    "role": "Developer"
-	}
+        {
+            "name": "Rodrigo Yuri",
+            "email": "rodrigo_yuri@hotmail.com",
+            "role": "Developer"
+        }
     ],
     "require": {}
 }
