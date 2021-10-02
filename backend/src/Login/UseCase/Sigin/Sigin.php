@@ -3,7 +3,7 @@
 namespace TaskTime\Login\UseCase\Sigin;
 
 use Exception;
-use TaskTime\Login\UseCase\Repository\RepositoryInterface;
+use TaskTime\Login\Repository\RepositoryInterface;
 
 class Sigin
 {

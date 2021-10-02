@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskTime\Login\UseCase\Repository;
+namespace TaskTime\Login\Repository;
 
 use TaskTime\Login\Entity\Login;
 

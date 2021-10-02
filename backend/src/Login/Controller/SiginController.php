@@ -2,7 +2,7 @@
 
 namespace TaskTime\Login\Controller;
 
-use TaskTime\Login\UseCase\Repository\RepositoryInterface;
+use TaskTime\Login\Repository\RepositoryInterface;
 use TaskTime\Login\UseCase\Sigin\InputData;
 use TaskTime\Login\UseCase\Sigin\Sigin;
 use TaskTime\Login\UseCase\Sigin\TokenModel;
