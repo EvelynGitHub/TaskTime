@@ -3,7 +3,12 @@
     "description": "Um facilitador para o gerenciamento de tempos em tarefas",
     "autoload": {
         "psr-4": {
-            "TaksTime\\": "src/"
+            "TaskTime\\": "src/"
+        }
+    },
+	"autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests\\"
         }
     },
     "authors": [
@@ -18,5 +23,13 @@
             "role": "Developer"
         }
     ],
-    "require": {}
+    "require": {
+		"php": "^7.4||^8.0"
+	},
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+	"scripts": {
+		"test" : "vendor/bin/phpunit"
+	}
 }
