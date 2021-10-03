@@ -15,16 +15,21 @@ class LoginRepository implements RepositoryInterface
 	{
 
 		$uuid = "123123-3123sfds-41234234-45465sdf";
-		$type = "C"; //Comum
+		$type = "";
 
 		if($email == "admin@gmail.com"){
 			$type = "A"; // Administrador
-		}
-		if($email == "cliente@gmail.com"){
+		} else if($email == "cliente@gmail.com"){
 			$type = "B"; // Cliente
+		} else if($email == "dev@gmail.com"){
+			$type = "C"; // Dev
+		} else{
+			return null;
 		}
 
+		$pass = password_hash("123", PASSWORD_DEFAULT);
+
 		$email = new Email($email);
-		return new Login($uuid, $email, "123", $type, "", "Ativo");
+		return new Login($uuid, $email, $pass, $type, "", "Ativo");
 	}
 }
