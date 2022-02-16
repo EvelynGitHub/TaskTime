@@ -2,22 +2,23 @@
 
 namespace Tests\Login;
 require_once __DIR__ . "../../../vendor/autoload.php";
+
 use Exception;
 use PHPUnit\Framework\TestCase;
 use TaskTime\Login\Adapter\JWTAdapter;
 use TaskTime\Login\Adapter\LoginRepository;
-use TaskTime\Login\Controller\SiginController;
-use TaskTime\Login\UseCase\Sigin\InputData;
-use TaskTime\Login\UseCase\Sigin\Sigin;
-use TaskTime\Login\UseCase\Sigin\TokenModel;
+use TaskTime\Login\Controller\SignInController;
+use TaskTime\Login\UseCase\SignIn\InputData;
+use TaskTime\Login\UseCase\SignIn\SignIn;
+use TaskTime\Login\UseCase\SignIn\TokenModel;
 
 // require_once __DIR__ ."/../../src/Login/Adapter/LoginRepository.php";
 
 
-class SiginTest extends TestCase {
+class SignInTest extends TestCase {
 	/*
 	 * Para testar essa classe de teste:
-	 * composer run test tests/Login/SiginTest.php
+	 * composer run test tests/Login/SignInTest.php
 	 */
 
 	/**
@@ -32,8 +33,8 @@ class SiginTest extends TestCase {
 
 		$adapterJWT = new JWTAdapter();
 		$token = new TokenModel($adapterJWT);
-		// $controller = new SiginController($repository, $token);
-		$sigin = new Sigin($repository, $token);
+		// $controller = new SignInController($repository, $token);
+		$SignIn = new SignIn($repository, $token);
 		$input = InputData::create([
 			"email" => "admin@gmail.com",
 			"pass" => "123"]);
@@ -45,7 +46,7 @@ class SiginTest extends TestCase {
 
 		// ======== Agir ========
 		// $controller->handler();
-		$sigin->execute($input);
+		$SignIn->execute($input);
 
 	}
 }

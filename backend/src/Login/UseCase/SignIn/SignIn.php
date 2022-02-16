@@ -1,11 +1,11 @@
 <?php
 
-namespace TaskTime\Login\UseCase\Sigin;
+namespace TaskTime\Login\UseCase\SignIn;
 
 use Exception;
 use TaskTime\Login\Repository\RepositoryInterface;
 
-class Sigin
+class SignIn
 {
 	public RepositoryInterface $repository;
 	public TokenModel $token;

@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskTime\Login\UseCase\Sigin;
+namespace TaskTime\Login\UseCase\SignIn;
 
 use Exception;
 
@@ -23,7 +23,7 @@ class OutputData
 	public function __get(string $name)
 	{
 		if (!property_exists($this, $name)) {
-			throw new Exception(sprintf("Invalid Sigin Input Data Property '%s'", $name));
+			throw new Exception(sprintf("Invalid SignIn Input Data Property '%s'", $name));
 		}
 
 		return $this->{$name};

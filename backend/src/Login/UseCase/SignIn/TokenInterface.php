@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskTime\Login\UseCase\Sigin;
+namespace TaskTime\Login\UseCase\SignIn;
 
 interface TokenInterface
 {

@@ -3,13 +3,13 @@
 namespace TaskTime\Login\Controller;
 
 use TaskTime\Login\Repository\RepositoryInterface;
-use TaskTime\Login\UseCase\Sigin\InputData;
-use TaskTime\Login\UseCase\Sigin\Sigin;
-use TaskTime\Login\UseCase\Sigin\TokenModel;
+use TaskTime\Login\UseCase\SignIn\InputData;
+use TaskTime\Login\UseCase\SignIn\SignIn;
+use TaskTime\Login\UseCase\SignIn\TokenModel;
 // use Psr\Http\Message\RequestInterface as Request;
 // use Psr\Http\Message\ResponseInterface as Response;
 
-class SiginController
+class SignInController
 {
 	private RepositoryInterface $repository;
 	private TokenModel $token;
@@ -23,7 +23,7 @@ class SiginController
 	// public function handle(Request $request, Response $response, array $args = []): Response
 	public function handler($request, $response)
 	{
-		$sigin = new Sigin($this->repository, $this->token);
+		$SignIn = new SignIn($this->repository, $this->token);
 
 		// $bodyArray = json_decode($request->getBody()->getContents(), true);
 
@@ -32,7 +32,7 @@ class SiginController
             'pass' => $request->query("pass"),
 		]);
 
-		$output = $sigin->execute($input);
+		$output = $SignIn->execute($input);
 
 		$response->getBody()->write($output->token);
 	}

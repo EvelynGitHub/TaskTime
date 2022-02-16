@@ -2,7 +2,7 @@
 
 namespace TaskTime\Login\Adapter;
 
-use TaskTime\Login\UseCase\Sigin\TokenInterface;
+use TaskTime\Login\UseCase\SignIn\TokenInterface;
 
 class JWTAdapter implements TokenInterface
 {
