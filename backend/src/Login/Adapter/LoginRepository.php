@@ -38,4 +38,9 @@ class LoginRepository implements RepositoryInterface
 	{
 		return null;
 	}
+
+	public function resetPassword(string $uuidLogin, string $newPassword) : bool
+	{
+		return false;
+	}
 }
