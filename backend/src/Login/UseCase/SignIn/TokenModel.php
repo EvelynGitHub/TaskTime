@@ -15,4 +15,9 @@ class TokenModel
 	{
 		return $this->interface->generateToken($data);
 	}
+
+	public function getPayloadToken(string $token): ?array
+	{
+		return $this->interface->validadeToken($token);
+	}
 }

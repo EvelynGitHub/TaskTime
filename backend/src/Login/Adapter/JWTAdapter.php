@@ -11,4 +11,19 @@ class JWTAdapter implements TokenInterface
 	{
 		return "Token";
 	}
+
+
+	public function validadeToken(string $token): array
+	{
+
+		return [
+			"token_valid" => true,
+			"token_expired" => false,
+			"payload" => [
+				"nome" => "Fulano",
+				"status" => "Ativo",
+				"type" => "A"
+			]
+		];
+	}
 }
