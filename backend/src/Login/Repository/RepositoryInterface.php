@@ -9,4 +9,5 @@ use TaskTime\Login\Entity\Login;
 interface RepositoryInterface
 {
 	public function getByEmail(string $email = null): ?Login;
+	public function register(Login $login): ?int;
 }

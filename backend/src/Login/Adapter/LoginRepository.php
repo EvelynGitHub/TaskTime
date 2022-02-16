@@ -17,13 +17,13 @@ class LoginRepository implements RepositoryInterface
 		$uuid = "123123-3123sfds-41234234-45465sdf";
 		$type = "";
 
-		if($email == "admin@gmail.com"){
+		if ($email == "admin@gmail.com") {
 			$type = "A"; // Administrador
-		} else if($email == "cliente@gmail.com"){
+		} else if ($email == "cliente@gmail.com") {
 			$type = "B"; // Cliente
-		} else if($email == "dev@gmail.com"){
+		} else if ($email == "dev@gmail.com") {
 			$type = "C"; // Dev
-		} else{
+		} else {
 			return null;
 		}
 
@@ -31,5 +31,11 @@ class LoginRepository implements RepositoryInterface
 
 		$email = new Email($email);
 		return new Login($uuid, $email, $pass, $type, "", "Ativo");
+	}
+
+
+	public function register(Login $login): ?int
+	{
+		return null;
 	}
 }
