@@ -25,8 +25,8 @@ class SignIn
 		}
 
 		// Verifica senhas
-		if(!password_verify($input->password, $loginExist->password)){
-			throw new Exception("Email ou senha inválidos!");
+		if(!password_verify($input->password, $loginExist->getPassword())){
+			throw new Exception("Email ou senha incorreto!");
 		}
 
 		return OutputData::create([
