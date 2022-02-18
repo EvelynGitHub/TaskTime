@@ -9,9 +9,9 @@ use TaskTime\User\Repository\RepositoryInterface;
 
 class UserRepository implements RepositoryInterface
 {
-    public function register(int $idLogin, User $user): ?User
+    public function register(int $idLogin, User $user): ?int
     {
         // Relacionar o 
-        return $user;
+        return null;
     }
 }
