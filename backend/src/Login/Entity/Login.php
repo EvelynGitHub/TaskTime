@@ -6,14 +6,27 @@ use TaskTime\Login\Entity\ValueObject\Email;
 
 class Login
 {
+    private string $uuid;
+    private Email $email;
+    private string $password;
+    private string $type;
+    private string $perl;
+    private string $status;
+
     public function __construct(
-        private string $uuid,
-        private Email $email,
-        private string $password,
-        private string $type,
-        private string $perl,
-        private string $status
+        string $uuid = null,
+        Email $email = null,
+        string $password = null,
+        string $type = null,
+        string $perl = null,
+        string $status
     ) {
+        $this->uuid = $uuid;
+        $this->email = $email;
+        $this->password = $password;
+        $this->type = $type;
+        $this->perl = $perl;
+        $this->status = $status;
     }
 
     /**
