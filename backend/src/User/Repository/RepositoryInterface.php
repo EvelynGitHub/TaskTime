@@ -8,5 +8,5 @@ use TaskTime\User\Entity\User;
 
 interface RepositoryInterface
 {
-	public function register(int $idLogin, User $user): ?User;
+	public function register(int $idLogin, User $user): ?int;
 }
