@@ -6,8 +6,8 @@ use Exception;
 
 class OutputData
 {
-	private string $email;
-	private TokenModel $token;
+	public string $email;
+	public string $token;
 
 	private function __construct(array $data)
 	{
