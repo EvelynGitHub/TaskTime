@@ -3,16 +3,24 @@
 namespace TaskTime\Login\UseCase\SignIn;
 
 use Exception;
+use TaskTime\Login\Entity\Exceptions\InvalidEmailValue;
+use TaskTime\Login\Entity\ValueObject\Email;
 
 class InputData
 {
-	private string $email;
-	private string $password;
+	public Email $email;
+	public string $password;
 
 	private function __construct(array $data)
 	{
-		$this->email = $data["email"];
-		$this->password = $data['password'];
+		try {
+			$this->email = new Email($data["email"]);
+			$this->password = $data['password'];
+		} catch (InvalidEmailValue $iev) {
+			throw new InvalidEmailValue($iev->getMessage());
+		} catch (\TypeError $te) {
+			throw new Exception("Obrigatório informar a senha!");
+		}
 	}
 
 	public static function create(array $values): InputData
