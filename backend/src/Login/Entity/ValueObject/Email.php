@@ -8,11 +8,15 @@ class Email
 {
 	private string $email;
 
-	public function __construct(string $email)
+	public function __construct(?string $email)
 	{
-		if (!$this->validate($email)) {
-			throw new InvalidEmailValue("Email Invalido");
+		if (is_null($email)) {
+			throw new InvalidEmailValue("Obrigatório informar o email!");
 		}
+		if (!$this->validate($email)) {
+			throw new InvalidEmailValue("Email Inválido");
+		}
+
 		$this->email = $email;
 	}
 
