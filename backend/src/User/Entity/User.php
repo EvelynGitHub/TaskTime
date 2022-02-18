@@ -8,12 +8,21 @@ use TaskTime\Login\Entity\Login;
 
 class User
 {
+    private string $uuid;
+    private ?string $firstName;
+    private ?string $lastName;
+    private Login $login;
+
     public function __construct(
-        private string $uuid,
-        private string $firstName,
-        private string $lastName,
-        private Login $login
+        string $uuid,
+        string $firstName,
+        string $lastName,
+        Login $login
     ) {
+        $this->uuid = $uuid;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->login = $login;
     }
 
     /**
