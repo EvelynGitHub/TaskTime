@@ -25,6 +25,12 @@ class SignUp
 
 	public function execute(InputData $input)
 	{
+		$emailExist = $this->repositoryLogin->getByEmail($input->email);
+
+		if($emailExist) {
+			throw new Exception("O email informado já está em uso!");
+		}
+
 		$uuidLogin = 'login-123-teste-1';
 		$login = new Login($uuidLogin, $input->email, $input->password, 'C', 'sdaasd', '');
 
