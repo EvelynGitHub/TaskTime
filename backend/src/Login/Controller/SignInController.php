@@ -23,7 +23,7 @@ class SignInController
 	// public function handle(Request $request, Response $response, array $args = []): Response
 	public function handler($request, $response)
 	{
-		$SignIn = new SignIn($this->repository, $this->token);
+		$signIn = new SignIn($this->repository, $this->token);
 
 		// $bodyArray = json_decode($request->getBody()->getContents(), true);
 
@@ -32,7 +32,7 @@ class SignInController
             'pass' => $request->query("pass"),
 		]);
 
-		$output = $SignIn->execute($input);
+		$output = $signIn->execute($input);
 
 		$response->getBody()->write($output->token);
 	}
