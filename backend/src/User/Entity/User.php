@@ -16,10 +16,10 @@ class User
     private ?Projects $projects;
 
     public function __construct(
-        string $uuid,
-        string $firstName,
-        string $lastName,
-        Login $login
+        string $uuid = null,
+        string $firstName = null,
+        string $lastName = null,
+        Login $login = null
     ) {
         $this->uuid = $uuid;
         $this->firstName = $firstName;

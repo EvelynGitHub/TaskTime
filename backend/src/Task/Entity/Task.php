@@ -8,6 +8,7 @@ use TaskTime\User\Entity\User;
 
 class Task
 {
+    // private $id;
     private string $uuid;
     private ?string $title;
     private ?string $description;
