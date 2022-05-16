@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace TaskTime\User\Entity;
 
 use TaskTime\Login\Entity\Login;
+use TaskTime\Project\Entity\Projects;
 
 class User
 {
@@ -12,6 +13,7 @@ class User
     private ?string $firstName;
     private ?string $lastName;
     private Login $login;
+    private ?Projects $projects;
 
     public function __construct(
         string $uuid,
@@ -101,6 +103,24 @@ class User
     public function setLogin($login)
     {
         $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of projects
+     */
+    public function getProjects(): ?Projects
+    {
+        return $this->projects;
+    }
+
+    /**
+     * Set the value of projects
+     */
+    public function setProjects(Projects $projects): self
+    {
+        $this->projects = $projects;
 
         return $this;
     }
