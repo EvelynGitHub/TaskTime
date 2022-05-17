@@ -3,6 +3,7 @@
 namespace TaskTime\Task\UseCase\Create;
 
 use Exception;
+use TaskTime\User\UseCase\Authenticated\InputDataAuth;
 use TypeError;
 
 class InputData
@@ -12,6 +13,7 @@ class InputData
 	private string $estimatedTime;
 	private string $assignersUuid;
 	private string $project;
+	private InputDataAuth $credentials;
 
 	private function __construct(array $data)
 	{
@@ -21,6 +23,7 @@ class InputData
 			$this->project = $data["project_uuid"];
 			$this->estimatedTime = $data["estimated_time"] ?? null;
 			$this->assignersUuid = $data["assigners_uuid"] ?? null;
+			$this->credentials = InputDataAuth::create($data['credencials']);
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
 		} catch (\Throwable $th) {

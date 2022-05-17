@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskTime\Task\UseCase\FindByUuid;
+namespace TaskTime\User\UseCase\FindByUuid;
 
 use Exception;
 use TaskTime\Login\UseCase\SignIn\TokenModel;
