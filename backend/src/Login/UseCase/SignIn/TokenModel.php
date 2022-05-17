@@ -16,8 +16,18 @@ class TokenModel
 		return $this->interface->generateToken($data);
 	}
 
-	public function getPayloadToken(string $token): ?array
+	public function getPayloadToken(string $token = null): ?array
 	{
-		return $this->interface->validadeToken($token);
+		$data = $this->interface->validadeToken($token);
+
+		if ($data["token_valid"] && !$data["token_expired"])
+			return $data['payload'];
+
+		return null;
+	}
+
+	public function getDataUserLogged()
+	{
+		
 	}
 }
