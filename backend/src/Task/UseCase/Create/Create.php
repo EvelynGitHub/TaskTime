@@ -9,19 +9,19 @@ use TaskTime\Login\UseCase\SignIn\TokenModel;
 use TaskTime\Task\Entity\Task;
 use TaskTime\Task\Repository\RepositoryInterface;
 use TaskTime\User\Entity\User;
-use TaskTime\User\UseCase\FindByUuid\FindByUuid;
+use TaskTime\User\UseCase\Authenticated\Authenticated;
 
 class Create
 {
     public RepositoryInterface $repository;
-    public FindByUuid $findUser;
+    public Authenticated $authUser;
     public TokenModel $token;
 
-    public function __construct(RepositoryInterface $repository, FindByUuid $findByUuid)
+    public function __construct(RepositoryInterface $repository, Authenticated $authUser)
     {
         $this->repository = $repository;
         // $this->token = $token;
-        $this->findUser = $findByUuid;
+        $this->authUser = $authUser;
     }
 
     public function execute(InputData $input)
@@ -30,7 +30,7 @@ class Create
         // Devo descobri qual é o usuario que está criando a atividade através do token
         // $user = $this->token->getPayloadToken($this->token);
 
-        $userAssigner = new User();
+        $userAssigner = $this->authUser->execute($input->credencials);
 
         $uuid = "";
         $task = new Task($uuid, $input->title, $input->description);
