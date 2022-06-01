@@ -9,6 +9,7 @@ use TaskTime\Project\Entity\Projects;
 
 class User
 {
+    private $id;
     private string $uuid;
     private ?string $firstName;
     private ?string $lastName;
@@ -25,6 +26,26 @@ class User
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->login = $login;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
