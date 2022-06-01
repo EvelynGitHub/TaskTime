@@ -4,34 +4,49 @@ declare(strict_types=1);
 
 namespace TaskTime\Task\Entity;
 
+use TaskTime\Project\Entity\Project;
 use TaskTime\User\Entity\User;
 
 class Task
 {
-    // private $id;
+    private $id;
     private string $uuid;
     private ?string $title;
     private ?string $description;
-    private $estimatedTime;
+    private int $estimatedTime;
     private User $owner;
-    private User $assigners; // Pessoa a quem será atibuida a Task
-    /**
-     * $projetc pode ter muitas Tasks e muitos colaboradores, ele também pode ou não ter um cliente em mente
-     */
-    private $project;
-    /**
-     * $label deve ser uma indicação da atividade como, em aberto, concluido, importante, etc
-     */
+    private User $assigners; // Pessoa a quem será atribuída a Task
+    private Project $project;
     private $label;
 
     public function __construct(
         string $uuid,
         string $title,
-        string $description,
+        string $description
     ) {
         $this->uuid = $uuid;
         $this->title = $title;
         $this->description = $description;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -129,7 +144,7 @@ class Task
         return $this->project;
     }
 
-    public function setProject($project)
+    public function setProject(Project $project)
     {
         $this->project = $project;
     }
