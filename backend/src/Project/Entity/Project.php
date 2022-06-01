@@ -8,11 +8,49 @@ use TaskTime\Task\Entity\Tasks;
 
 class Project
 {
+    private $id;
+    private $uuid;
     private $owner;
     private string $title;
     private string $description;
     private Tasks $tasks;
 
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     */
+    public function setId($id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of uuid
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * Set the value of uuid
+     */
+    public function setUuid($uuid): self
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
 
     /**
      * Get the value of owner
