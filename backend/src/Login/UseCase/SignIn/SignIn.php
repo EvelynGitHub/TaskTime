@@ -29,10 +29,14 @@ class SignIn
 			throw new Exception("Email ou senha incorreto!");
 		}
 
+		// Dar um jeito de conseguir o perfil do usuário que logou no sistema
+		// $user = $this->repository->getUserByLogin();
+
 		return OutputData::create([
 			"email" => $input->email,
 			"token" => $this->token->create([
 				"expiration_at" => "2h",
+				"uuid_login" => $loginExist->getUuid()
 			])
 		]);
 
