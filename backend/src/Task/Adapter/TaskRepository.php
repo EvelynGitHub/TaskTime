@@ -10,8 +10,11 @@ use TaskTime\Task\Repository\RepositoryInterface;
 
 class TaskRepository implements RepositoryInterface
 {
-    public function create(Task $task)
+    public function create(Task $task): Task
     {
+        $task->setId(1);
+
+        return $task;
     }
 
     public function update(Task $task): bool
