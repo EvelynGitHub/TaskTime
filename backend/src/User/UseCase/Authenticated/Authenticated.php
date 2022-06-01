@@ -21,7 +21,7 @@ class Authenticated
 
     public function execute(InputDataAuth $input)
     {
-        $user = $this->repository->getUserByUuid($input->uuidUser);
+        $user = $this->repository->getUserByUuidLogin($input->uuidLogin);
 
         return $user;
     }
