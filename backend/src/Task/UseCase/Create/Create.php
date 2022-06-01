@@ -5,42 +5,50 @@ declare(strict_types=1);
 namespace TaskTime\Task\UseCase\Create;
 
 use Exception;
-use TaskTime\Login\UseCase\SignIn\TokenModel;
+use TaskTime\Repository\Repository\ProjectRepositoryInterface;
 use TaskTime\Task\Entity\Task;
 use TaskTime\Task\Repository\RepositoryInterface;
-use TaskTime\User\Entity\User;
-use TaskTime\User\UseCase\Authenticated\Authenticated;
+use TaskTime\User\Repository\RepositoryInterface as UserRepositoryInterface;
 
 class Create
 {
     public RepositoryInterface $repository;
-    public Authenticated $authUser;
-    public TokenModel $token;
+    public UserRepositoryInterface $userRepository;
+    public ProjectRepositoryInterface $projectRepository;
 
-    public function __construct(RepositoryInterface $repository, Authenticated $authUser)
+    public function __construct(RepositoryInterface $repository, UserRepositoryInterface $userRepository, ProjectRepositoryInterface $projectRepository)
     {
         $this->repository = $repository;
-        // $this->token = $token;
-        $this->authUser = $authUser;
+        $this->userRepository = $userRepository;
+        $this->projectRepository = $projectRepository;
     }
 
-    public function execute(InputData $input)
+    public function execute(InputData $input): Task
     {
+        // Seria possível que não encontrasse o usuário porque houve manipulação do token para ataques?
+        $authUser = $this->userRepository->getUserByUuidLogin($input->credentials->uuidLogin);
+
+        // Busco projeto
+        $project = $this->projectRepository->getByUuid($input->project);
+
         // Deve criar uma nova Task
-        // Devo descobri qual é o usuario que está criando a atividade através do token
-        // $user = $this->token->getPayloadToken($this->token);
-
-        $userAssigner = $this->authUser->execute($input->credencials);
-
-        $uuid = "";
+        $uuid = (string) rand(0, 99999);
         $task = new Task($uuid, $input->title, $input->description);
-        $task->setProject($input->project);
-        $task->setAssigners($userAssigner);
+        $task->setProject($project);
+        $task->setOwner($authUser);
+        $task->setEstimatedTime($input->estimatedTime);
 
-        $this->repository->create($task);
+        // Futuramente, deve-se verificar se esse pessoa pode criar uma tarefa para o projeto?
+        if ($input->assignersUuid) {
+            $task->setAssigners($authUser);
+        } else {
+            // Senão existir esse cara ?
+            $userAssigner = $this->userRepository->getUserByUuid($input->assignersUuid);
+            $task->setAssigners($userAssigner);
+        }
 
-        return [
-            "ok"
-        ];
+        $taskSave = $this->repository->create($task);
+
+        return $taskSave;
     }
 }
