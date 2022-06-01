@@ -8,12 +8,12 @@ use TypeError;
 
 class InputData
 {
-	private string $title;
-	private string $description;
-	private string $estimatedTime;
-	private string $assignersUuid;
-	private string $project;
-	private InputDataAuth $credentials;
+	public string $title;
+	public string $description;
+	public string $estimatedTime;
+	public string $assignersUuid;
+	public string $project;
+	public InputDataAuth $credentials;
 
 	private function __construct(array $data)
 	{
@@ -23,7 +23,7 @@ class InputData
 			$this->project = $data["project_uuid"];
 			$this->estimatedTime = $data["estimated_time"] ?? null;
 			$this->assignersUuid = $data["assigners_uuid"] ?? null;
-			$this->credentials = InputDataAuth::create($data['credencials']);
+			$this->credentials = InputDataAuth::create($data["credentials"]);
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());
 		} catch (\Throwable $th) {
