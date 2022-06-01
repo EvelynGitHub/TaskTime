@@ -12,4 +12,5 @@ interface RepositoryInterface
 	public function update(User $user): bool;
 	public function delete(string $uuid): bool;
 	public function getUserByUuid(string $uuid): User;
+	public function getUserByUuidLogin(string $uuidLogin): User;
 }
